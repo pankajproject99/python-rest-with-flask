@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from second_route import second
+from admin.second_route import second
 
 app = Flask(__name__)
 app.register_blueprint(second, url_prefix="/second")
