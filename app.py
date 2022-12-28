@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
+from second_route import second
 
 app = Flask(__name__)
+app.register_blueprint(second, url_prefix="/second")
 
 db_courses = [
     {'name': "python", 'course_id': "0", 'Description': "Python Programming", 'price': "1.0"},
