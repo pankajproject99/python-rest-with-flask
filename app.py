@@ -31,5 +31,17 @@ def create():
     db_courses.append(course);
     return jsonify({'Created': course})
 
+
+@app.route("/courses/<int:course_id>", methods=['PUT'])
+def course_update(course_id):
+    db_courses[course_id]['Description'] = "XYZ"
+    return jsonify({'course': db_courses[course_id]})
+
+
+@app.route("/courses/<int:course_id>", methods=['DELETE'])
+def delete(course_id):
+    db_courses.remove(db_courses[course_id])
+    return jsonify({'result': True})
+
 if __name__ == "__main__":
     app.run(debug=True)
