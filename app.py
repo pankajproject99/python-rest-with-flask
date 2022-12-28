@@ -20,5 +20,16 @@ def get_courses():
     return jsonify({'Courses': db_courses})
 
 
+@app.route("/courses/<int:course_id>", methods=['GET'])
+def get_course_by_id(course_id):
+    return jsonify({'course': db_courses[course_id]})
+
+
+@app.route("/courses", methods=['POST'])
+def create():
+    course = {'name': ".Apache", 'course_id': "5", 'Description': "Apache Programming", 'price': "6.0"}
+    db_courses.append(course);
+    return jsonify({'Created': course})
+
 if __name__ == "__main__":
     app.run(debug=True)
